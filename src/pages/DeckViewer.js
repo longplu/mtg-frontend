@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
 import DeckViewerCards from "../components/DeckViewerCards";
 import DeckViewerPicklist from "../components/DeckViewerPicklist";
 import Search from "./Search";
@@ -18,13 +17,25 @@ function DeckViewer(props) {
       setDecks(data);
     };
 
+    const createDeck = async (deck) => {
+        await fetch(URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(deck),
+        });
+    
+        getDecks();
+      };
+
     useEffect(() => { 
         getDecks() 
     }, [])
 
     return (
             <div>DeckViewer Section
-                <DeckViewerPicklist decks={decks}/>
+                <DeckViewerPicklist decks={decks} createDeck={createDeck}/>
                 <DeckViewerCards />
                 <Search />
             </div>
