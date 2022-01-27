@@ -1,4 +1,4 @@
-function DeckViewerCards() {
+function DeckViewerCards(props) {
     return (
         <div>DeckViewerCards Section</div>
     )
