@@ -35,8 +35,8 @@ function DeckViewer(props) {
 
     return (
             <div>DeckViewer Section
-                <DeckViewSubmitNewDecks createDeck={createDeck} />
                 <DeckViewerPicklist  decks={decks}/>
+                <DeckViewSubmitNewDecks decks={decks} createDeck={createDeck} />
                 <Search />
             </div>
     )

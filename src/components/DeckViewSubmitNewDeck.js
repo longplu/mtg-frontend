@@ -2,7 +2,6 @@ import { useState } from 'react'
 
 function DeckViewSubmitNewDecks(props) {
     const [newDeck, setNewDeck] = useState({
-        _id:'',
         name:'',
         cards: []
     })
@@ -18,7 +17,6 @@ function DeckViewSubmitNewDecks(props) {
         event.preventDefault()
         props.createDeck(newDeck)
         setNewDeck({
-            _id:'',
             name:'',
             cards: []
         })
