@@ -1,12 +1,8 @@
 import { useState } from 'react'
 
-function DeckViewerPicklist(props) {
-    const deckPickListValues = props.decks.map((deck) => (
-        <option key={deck._id} value={deck.name}>{deck.name}</option>
-        ))
-        
+function DeckViewSubmitNewDecks(props) {
     const [newDeck, setNewDeck] = useState({
-        user:'',
+        _id:'',
         name:'',
         cards: []
     })
@@ -22,19 +18,14 @@ function DeckViewerPicklist(props) {
         event.preventDefault()
         props.createDeck(newDeck)
         setNewDeck({
-            user:'',
+            _id:'',
             name:'',
             cards: []
         })
     }
-
     return (
         <div>
-        <form action="">
-            <select name="list" placeholder='Select a Decklist'>
-                ${deckPickListValues}
-            </select>
-        </form>
+
 
         <form onSubmit={handleSubmit}>
             <input 
@@ -47,8 +38,9 @@ function DeckViewerPicklist(props) {
 
             <input type="submit" value="Create a New Deck" />
         </form>
+
         </div>
     )
 }
 
-export default DeckViewerPicklist;
+export default DeckViewSubmitNewDecks;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import DeckViewerCards from "../components/DeckViewerCards";
-import DeckViewerPicklist from "../components/DeckViewerPicklist";
+import DeckViewerPicklist from "../components/DeckViewPicklist";
+import DeckViewSubmitNewDecks from "../components/DeckViewSubmitNewDeck";
 import Search from "./Search";
 
 function DeckViewer(props) {
@@ -35,8 +35,8 @@ function DeckViewer(props) {
 
     return (
             <div>DeckViewer Section
-                <DeckViewerPicklist decks={decks} createDeck={createDeck}/>
-                <DeckViewerCards />
+                <DeckViewSubmitNewDecks createDeck={createDeck} />
+                <DeckViewerPicklist  decks={decks}/>
                 <Search />
             </div>
     )
