@@ -6,10 +6,9 @@ function DeckViewerCards(props) {
         </h4>
     ))
 
-    console.log(props)
 
     return (
-        <div>DeckViewerCards Section
+        <div>
 
             {listDeckCards}
         

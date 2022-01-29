@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import DeckViewerPicklist from "../components/DeckViewPicklist";
 import DeckViewSubmitNewDecks from "../components/DeckViewSubmitNewDeck";
-import Search from "./Search";
 
 function DeckViewer(props) {
     const [decks, setDecks] = useState([]); // represent emptiness of state with what is appropriate. If state is set with an array use an empty array not null.
@@ -29,15 +28,17 @@ function DeckViewer(props) {
         getDecks();
       };
 
+      
+
     useEffect(() => { 
         getDecks() 
     }, [])
 
     return (
-            <div>DeckViewer Section
-                <DeckViewerPicklist  decks={decks}/>
-                <DeckViewSubmitNewDecks decks={decks} createDeck={createDeck} />
-                <Search />
+            <div>
+                <DeckViewSubmitNewDecks createDeck={createDeck} />
+                <DeckViewerPicklist  decks={decks} getDecks={getDecks}/>
+                
             </div>
     )
 }

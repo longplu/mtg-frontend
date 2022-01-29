@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DeckViewerCards from './DeckViewerCards'
+import Search from './Search'
 
 function DeckViewerPicklist(props) {
     const deckPickListValues = props.decks.map((deck) => (
@@ -16,7 +17,6 @@ function DeckViewerPicklist(props) {
 
 
         const handleChange = (event) => {
-            // console.log(props.decks[event.target.selectedIndex-1].cards)
             setSelectedDeck( prevState => ({
                 ...prevState, 
                 _id: event.target.selectedIndex > 0 ? props.decks[event.target.selectedIndex-1]._id:'',
@@ -35,7 +35,7 @@ function DeckViewerPicklist(props) {
             </select>
         </form>
         <DeckViewerCards selectedDeck={selectedDeck} />
-
+        <Search selectedDeck={selectedDeck} getDecks={props.getDecks}/>
         </div>
     )
 }
