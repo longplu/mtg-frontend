@@ -41,7 +41,7 @@ function SearchDisplay(props) {
                 <form onSubmit={handleSubmit}>
                     {/* <input type="string" value={props.selectedDeck._id} name="_id" hidden readOnly="isReadOnly"/> */}
                     {/* <input type="string" value={props.selectedDeck._name} name="name" hidden readOnly="isReadOnly"/> */}
-                    <input type="string" value={card.id} name="scryfall_id" hidden readOnly="isReadOnly"/>
+                    <input type="string" value={card.id} name="scryfall_id" hidden readOnly="isReadOnly" onChange={handleChange}/>
                     <input type="number" name="qty" onChange={handleChange}/>
                     <input type="submit" value="add to deck"/>
                 </form>

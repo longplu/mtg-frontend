@@ -6,9 +6,9 @@ import SearchDisplay from "./SearchDisplay";
 
 function Search(props) {
 
-  const URL = `http://localhost:3001/decks/${props.selectedDeck._id}`;
+  // const URL = `http://localhost:3001/decks/${props.selectedDeck._id}`;
 
-  console.log(props.selectedDeck)
+//   console.log(props.selectedDeck)
 
 const [cards, setCards] = useState(null)
 
@@ -19,21 +19,21 @@ const getCards = async (searchTerm) => {
 
 }
 
-const updateDeck = async (deck) => {
-    await fetch(URL, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(deck),
-    });
+// const updateDeck = async (deck) => {
+//     await fetch(URL, {
+//       method: "PUT",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify(deck),
+//     });
 
-    props.getDecks()
-  };
+//     props.getDecks()
+//   };
 
 
     return (
         <div>
         <SearchForm getCards={getCards}/>
-        <SearchDisplay cards={cards} updateDeck={updateDeck} selectedDeck={props.selectedDeck}/>
+        <SearchDisplay cards={cards} updateDeck={props.updateDeck} selectedDeck={props.selectedDeck}/>
         </div>
     )
 }
