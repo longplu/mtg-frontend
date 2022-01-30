@@ -112,12 +112,12 @@ const getSearchCards = async (searchTerm) => {
 //         {card.qty}  {card.scryfall_id}
 //     </h4>
 // ))
-// console.log(decks[selectedDeck.selectedIndex-1].cards)
-const listDeckCards = decks[selectedDeck.selectedIndex-1].cards.map((card) => (
+// console.log(decks[selectedDeck.selectedIndex].cards)
+const listDeckCards = selectedDeck.selectedIndex > 0 ? decks[selectedDeck.selectedIndex-1].cards.map((card) => (
     <h4 key={card._id}>
         {card.qty}  {card.scryfall_id}
     </h4>
-))
+)):<h1>No cards to display...</h1>
 
 const loaded = () => {
     return (
