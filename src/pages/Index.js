@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import { Redirect } from 'react-router-dom';
 function Index(props) {
 
 //List all states
@@ -112,8 +112,8 @@ const getSearchCards = async (searchTerm) => {
 //         {card.qty}  {card.scryfall_id}
 //     </h4>
 // ))
-// console.log(decks[selectedDeck.selectedIndex].cards)
-const listDeckCards = selectedDeck.selectedIndex > 0 ? decks[selectedDeck.selectedIndex-1].cards.map((card) => (
+console.log(!!selectedDeck.selectedIndex)
+const listDeckCards = !!selectedDeck.selectedIndex ? decks[selectedDeck.selectedIndex-1].cards.map((card) => (
     <h4 key={card._id}>
         {card.qty}  {card.scryfall_id}
     </h4>
@@ -191,10 +191,13 @@ const loaded = () => {
     }
 
     const handleClickDeleteDeck = () => {
-        console.log(props.history)
         deleteDeck(selectedDeck._id);
-        // props.history.push('/')
-      }
+        setSelectedDeck({
+            _id:'',
+            name:'',
+            cards: []
+        })
+    }
 
 //List all 
 
