@@ -72,11 +72,20 @@ const createDeck = async (deck) => {
     getDecks();
   };
 
-  const updateDeck = async (deck) => {
+const deleteDeck = async (deck) => {
+      console.log(deck)
+    await fetch(URL + deck, {
+      method: "DELETE",
+    });
+
+    getDecks();
+}
+
+  const updateDeck = async (card) => {
     await fetch(URL+selectedDeck._id, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(deck),
+      body: JSON.stringify(card),
     });
 
     getDecks()
@@ -98,7 +107,13 @@ const getSearchCards = async (searchTerm) => {
     <option key={deck._id} value={deck.name} cards={deck.cards}>{deck.name}</option>
     ))
 
-const listDeckCards = selectedDeck.cards.map((card) => (
+// const listDeckCards = selectedDeck.cards.map((card) => (
+//     <h4 key={card._id}>
+//         {card.qty}  {card.scryfall_id}
+//     </h4>
+// ))
+// console.log(decks[selectedDeck.selectedIndex-1].cards)
+const listDeckCards = decks[selectedDeck.selectedIndex-1].cards.map((card) => (
     <h4 key={card._id}>
         {card.qty}  {card.scryfall_id}
     </h4>
@@ -130,6 +145,7 @@ const loaded = () => {
 
     const handleSubmitNewDeck = (event) => {
         event.preventDefault()
+        console.dir(event.target)
         createDeck(newDeck)
         setNewDeck({
             name:'',
@@ -142,7 +158,8 @@ const loaded = () => {
             // [event.target.name]:event.target.value
             _id: event.target.selectedIndex > 0 ? decks[event.target.selectedIndex-1]._id:'',
             name: event.target.value,
-            cards:  event.target.selectedIndex > 0 ? decks[event.target.selectedIndex-1].cards:[]
+            cards:  event.target.selectedIndex > 0 ? decks[event.target.selectedIndex-1].cards:[],
+            selectedIndex: event.target.selectedIndex
         }))
     }
 
@@ -156,7 +173,6 @@ const loaded = () => {
     }
 
     const handleChangeNewDeckCard = (event) => {
-        console.log(event.target.value)
         setNewDeckCard({...newDeckCard, 
             scryfall_id: event.target.parentElement[0].value,
             qty: event.target.value 
@@ -173,6 +189,12 @@ const loaded = () => {
                 
         })
     }
+
+    const handleClickDeleteDeck = () => {
+        console.log(props.history)
+        deleteDeck(selectedDeck._id);
+        // props.history.push('/')
+      }
 
 //List all 
 
@@ -199,6 +221,11 @@ return (
 
         <input type="submit" value="Create a New Deck" />
         </form>
+
+{/* DELETE SELECTED DECK */}
+        <button onClick={handleClickDeleteDeck}>
+            Delete Selected Deck
+        </button>
 
 {/* SHOW SELECTED DECK CARDS */}
         <div>
