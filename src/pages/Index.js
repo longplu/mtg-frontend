@@ -1,17 +1,10 @@
 import { useEffect, useState } from "react";
-import { Redirect } from 'react-router-dom';
 function Index(props) {
 
 //List all states
 
 //All decks
 const [decks, setDecks] = useState([]);
-
-//New deck
-const [newDeck, setNewDeck] = useState({
-    name:'',
-    cards: []
-})
 
 //Selected deck
 const [selectedDeck, setSelectedDeck] = useState({
@@ -20,21 +13,31 @@ const [selectedDeck, setSelectedDeck] = useState({
     cards: []
 })
 
+//New deck
+const [newDeck, setNewDeck] = useState({
+    name:'',
+    cards: []
+})
+
+
 //Selected deck cards
-const [deckCards, setDeckCards] = useState([])
+// const [deckCards, setDeckCards] = useState([])
 
 //Search cards
-const [searchCards, setSearchCards] = useState(null)
 
 const [formState, setFormState] = useState({
     searchTerm: ''
 });
 
+const [searchCards, setSearchCards] = useState(null)
+
 //New deck card
 const [newDeckCard, setNewDeckCard] = useState({
 
     scryfall_id: '',
-    qty: ''
+    qty: '',
+    image: '',
+    name: ''
 
 })
 
@@ -51,14 +54,14 @@ const getDecks = async () => {
     setDecks(data);
   };
 
-const getDeckCards = async () => {
-    const response = await fetch(URL+selectedDeck._id, {
-      method: "GET",
-    });
-    const data = await response.json();
-    console.log(data)
-    setDeckCards(data.cards);
-  };
+// const getDeckCards = async () => {
+//     const response = await fetch(URL+selectedDeck._id, {
+//       method: "GET",
+//     });
+//     const data = await response.json();
+//     console.log(data)
+//     // setDeckCards(data.cards);
+//   };
 
 const createDeck = async (deck) => {
     await fetch(URL, {
@@ -112,21 +115,35 @@ const getSearchCards = async (searchTerm) => {
 //         {card.qty}  {card.scryfall_id}
 //     </h4>
 // ))
-console.log(!!selectedDeck.selectedIndex)
+// console.log(!!selectedDeck.selectedIndex)
 const listDeckCards = !!selectedDeck.selectedIndex ? decks[selectedDeck.selectedIndex-1].cards.map((card) => (
+    <div>
     <h4 key={card._id}>
-        {card.qty}  {card.scryfall_id}
+        {card.qty} X
     </h4>
+    <img src={card.image} alt={card.name} ></img>
+
+    </div>
 )):<h1>No cards to display...</h1>
 
 const loaded = () => {
+    // console.log(searchCards.data[0].image_uris.normal)
+    // console.log(searchCards.data)
+
     return (
         searchCards.data.map((card) => (
             <div key={card.id}>
-                <h3>{card.name}</h3>
+                <img src={card.image_uris ? card.image_uris.small:'#' } alt={card.name} ></img>
+                <h3 >{card.name}</h3>
                 <form onSubmit={handleSubmitNewDeckCard}>
-                    <input type="string" value={card.id} name="scryfall_id" hidden readOnly="isReadOnly" />
-                    <input type="number" name="qty" onChange={handleChangeNewDeckCard}/>
+                    <input type="text" value={card.id} name="scryfall_id" hidden readOnly="isReadOnly" />
+                    <input 
+                    type="number" 
+                    id={searchCards.data.indexOf(card)} 
+                    name="qty" 
+                    onChange={handleChangeNewDeckCard}/>
+                    <input type="text" value={card.name} name="name" hidden readOnly="isReadOnly" />
+                    <input type="text" value={card.image_uris ? card.image_uris.small:'#'} name="image" hidden readOnly="isReadOnly" />
                     <input type="submit" value="add to deck"/>
                 </form>
             </div>
@@ -171,12 +188,18 @@ const loaded = () => {
         event.preventDefault();
         getSearchCards(formState.searchTerm)
     }
-
     const handleChangeNewDeckCard = (event) => {
-        setNewDeckCard({...newDeckCard, 
+        console.dir(event.target.parentElement[0])
+        setNewDeckCard((prevState) => ({
+            ...prevState, 
             scryfall_id: event.target.parentElement[0].value,
-            qty: event.target.value 
-        });
+            qty: event.target.value,
+            name: event.target.parentElement[2].value,
+            image: event.target.parentElement[3].value,
+
+            
+
+        }));
     };
 
     const handleSubmitNewDeckCard = (event) => {

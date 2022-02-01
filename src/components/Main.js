@@ -1,5 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
-import DeckViewer from '../pages/DeckViewer'
+import Index from '../pages/Index';
 
 function Main() {
 
@@ -8,7 +8,7 @@ function Main() {
     return(
         <Switch>
             <Route exact path = '/'>
-                <DeckViewer />
+                <Index />
             </Route>
         </Switch>
     )
