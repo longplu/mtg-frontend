@@ -18,7 +18,7 @@ A simple CRUD app using the MERN stack for creating MTG Decks and adding cards f
 
 # Getting Started
 
-[Click here](#) to see the site live
+[Click here](https://mtg-manager-plus.netlify.app/) to see the site live
 
 
 ## Roadmap
