@@ -44,7 +44,7 @@ const [newDeckCard, setNewDeckCard] = useState({
 
 //List all backend routes
 
-const URL = "http://localhost:3001/decks/";
+const URL = "https://mtg-manager-plus-backend.herokuapp.com/decks/";
 
 const getDecks = async () => {
     const response = await fetch(URL, {

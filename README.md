@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# MTG Manager Plus
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple CRUD app using the MERN stack for creating MTG Decks and adding cards from the scryfall API. 
 
-## Available Scripts
+## Technologies USED
 
-In the project directory, you can run:
+- HTML5
+- CSS3
+- JavaScript
+- Node
+- Express
+- React
+- MongoDB
+- Heroku
+- Netlify
+- scryfall API
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Getting Started
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+[Click here](#) to see the site live
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Roadmap
 
-### `npm run build`
+[Trello](https://trello.com/b/ge432ovM/mtg-manager)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Wireframe
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[Invision](https://longlu267303.invisionapp.com/freehand/MTG-Manager-gzxn7qnGr)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Entity Relationship Diagram
 
-### `npm run eject`
+[drawSQL](https://drawsql.app/general-assembly-phoenix/diagrams/mtg-manager#)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Roadmap
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Unsolved Problems
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Submitting a new card to be added to the selected deck does not clear the form.
+- newDeckCard state is dependent on input of newDeckCard forms. Submitting a different 'card' will submit the card where qty was last inputted.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Future Enhancements
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- User Authentication with Firebase.
+- Delete or Update function to remove a set of cards from the selected deck.
+- Reorganize components to sensible React components (currently a single Index Component with 6 states)
+- General Styling
+- New page component to test playing selected deck.
